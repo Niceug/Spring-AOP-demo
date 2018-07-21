@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:contex="http://www.springframework.org/schema/context"
+       xmlns:bean="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+http://www.springframework.org/schema/beans/spring-beans.xsd
+http://www.springframework.org/schema/context
+http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean:component-scan base-package="com.ltp.aop" />
+
+    <bean id="systemPropertiesBean" class="com.ltp.aop.entity.SystemPropertiesBean" >
+        <property name="fileEncoding" value="#{systemProperties['file.encoding']}" />
+        <property name="osName" value="#{systemProperties['os.name']}" />
+    </bean>
+
+    <!--操作资源文件方法1-->
+    <util:properties id="properties"  location="database.properties" />
+
+    <!--操作资源文件方法2-->
+    <!--<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >-->
+        <!--<property name="fileEncoding" value="UTF-8" />-->
+        <!--<property name="location" value="db.properties" />-->
+    <!--</bean>-->
+
+    <!--操作资源文件方法3-->
+    <contex:property-placeholder file-encoding="UTF-8" location="db.properties" />
+
+</beans>
