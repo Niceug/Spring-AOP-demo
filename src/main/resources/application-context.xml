@@ -11,7 +11,7 @@ http://www.springframework.org/schema/context/spring-context.xsd http://www.spri
 
     <bean:component-scan base-package="com.ltp.aop" />
 
-    <bean id="systemPropertiesBean" class="com.ltp.aop.entity.SystemPropertiesBean" >
+    <bean id="systemPropertiesBean" class="com.ltp.aop.static_proxy.entity.SystemPropertiesBean" >
         <property name="fileEncoding" value="#{systemProperties['file.encoding']}" />
         <property name="osName" value="#{systemProperties['os.name']}" />
     </bean>
